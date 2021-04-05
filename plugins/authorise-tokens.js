@@ -1,7 +1,6 @@
 /*
 Extract and validate tokens in the URL if they are present.
 */
-import store from '~/store'
 
 /**
  * Reads the URL hash attempts and tries to detect if there is confirmation tokens from either an email signup or
@@ -102,7 +101,7 @@ function detectRecoveryToken() {
  */
 function confirmEmailToken(token) {
   console.log('confirm email token ', token)
-  store
+  this.$store
     .dispatch('auth/attemptConfirmation', token)
     .then((resp) => {
       alert(`${resp.email} has been confirmed, please login`)
@@ -120,7 +119,7 @@ function confirmEmailToken(token) {
  *                                             might be useful for other things later.
  */
 function confirmExternalAccessToken(externalAccessTokenObject) {
-  store
+  this.$store
     .dispatch('auth/completeExternalLogin', externalAccessTokenObject)
     .then(() => {
       alert('You have successfully signed in via external provider')
@@ -132,7 +131,7 @@ function confirmExternalAccessToken(externalAccessTokenObject) {
 }
 
 function confirmRecoveryToken(recoveryToken) {
-  store
+  this.$store
     .dispatch('auth/attemptPasswordRecovery', recoveryToken)
     .then(() => {
       this.$router.push('profile?showUpdateUserModal=true')
@@ -142,7 +141,7 @@ function confirmRecoveryToken(recoveryToken) {
       alert(`Can't recover password`)
     })
 }
-export default ({ app }, inject) => {
+export default ({ store, app }, inject) => {
   inject('detectTokens', () => detectTokens())
   inject('detectEmailConfirmationToken', () => detectEmailConfirmationToken())
   inject('detectExternalAccessToken', () => detectExternalAccessToken())
