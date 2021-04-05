@@ -101,7 +101,7 @@ function detectRecoveryToken() {
  */
 function confirmEmailToken(token) {
   console.log('confirm email token ', token)
-  this.store
+  store
     .dispatch('auth/attemptConfirmation', token)
     .then((resp) => {
       alert(`${resp.email} has been confirmed, please login`)
