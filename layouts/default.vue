@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import detectEmailConfirmationToken from '~/helpers/autorise-tokens'
+import detectEmailConfirmationToken from '~/helpers/authorise-tokens'
 export default {
   created() {
     this.$store.dispatch('auth/initAuth')
