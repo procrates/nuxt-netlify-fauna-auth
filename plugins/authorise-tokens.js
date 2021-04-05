@@ -1,7 +1,7 @@
 /*
 Extract and validate tokens in the URL if they are present.
 */
-import store from '~/store/auth'
+import store from '~/store'
 
 /**
  * Reads the URL hash attempts and tries to detect if there is confirmation tokens from either an email signup or
