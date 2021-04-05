@@ -1,7 +1,7 @@
 /* idempotent operation to bootstrap database */
 const faunadb = require('faunadb')
 const chalk = require('chalk')
-
+require('dotenv').config()
 const q = faunadb.query
 
 /*  */
