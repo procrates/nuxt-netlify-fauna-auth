@@ -168,7 +168,7 @@ export const actions = {
    */
   attemptConfirmation({ state }, token) {
     console.log('Attempting to verify token', token)
-    console.log(state.GoTrueAuth.confirm)
+    console.log(state.GoTrueAuth)
     return new Promise((resolve, reject) => {
       console.log('attempt confirmation promis')
       console.log(state.GoTrueAuth.confirm)
