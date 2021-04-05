@@ -7,7 +7,7 @@
 export default {
   created() {
     this.$store.dispatch('auth/initAuth')
-    this.detectEmailConfirmationToken()
+    this.$detectEmailConfirmationToken()
     console.log('created')
   },
 }

@@ -7,6 +7,7 @@ import store from '~/store/auth'
  * Reads the URL hash attempts and tries to detect if there is confirmation tokens from either an email signup or
  * external provider. If present it will call the relevant process to attempt to authorise the token.
  */
+
 function detectTokens() {
   const emailToken = detectEmailConfirmationToken()
   const externalAccessToken = detectExternalAccessToken()
@@ -141,7 +142,16 @@ function confirmRecoveryToken(recoveryToken) {
       alert(`Can't recover password`)
     })
 }
-
-export default function () {
-  detectTokens()
+export default ({ app }, inject) => {
+  inject('detectTokens', () => detectTokens())
+  inject('detectEmailConfirmationToken', () => detectEmailConfirmationToken())
+  inject('detectExternalAccessToken', () => detectExternalAccessToken())
+  inject('detectRecoveryToken', () => detectRecoveryToken())
+  inject('confirmEmailToken', (token) => confirmEmailToken(token))
+  inject('confirmExternalAccessToken', (externalAccessTokenObject) =>
+    confirmExternalAccessToken(externalAccessTokenObject)
+  )
+  inject('confirmRecoveryToken', (recoveryToken) =>
+    confirmRecoveryToken(recoveryToken)
+  )
 }
