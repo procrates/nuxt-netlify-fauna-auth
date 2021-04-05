@@ -100,7 +100,8 @@ function detectRecoveryToken() {
  * @param {string} token - authentication token used to confirm a user who has created an account via email signup.
  */
 function confirmEmailToken(token) {
-  store
+  console.log('confirm email token ', token)
+  this.store
     .dispatch('auth/attemptConfirmation', token)
     .then((resp) => {
       alert(`${resp.email} has been confirmed, please login`)
