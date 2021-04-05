@@ -168,7 +168,9 @@ export const actions = {
    */
   attemptConfirmation({ state }, token) {
     console.log('Attempting to verify token', token)
+
     return new Promise((resolve, reject) => {
+      console.log('attempt confirmation promis')
       state.GoTrueAuth.confirm(token)
         .then((response) => {
           console.log('User has been confirmed')
