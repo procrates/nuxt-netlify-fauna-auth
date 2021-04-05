@@ -1,68 +1,51 @@
 <template>
-  <div class="container">
+  <main class="home space">
+    <img
+      id="logo"
+      src="https://user-images.githubusercontent.com/18376481/78156268-78aed080-7436-11ea-9da7-57d83ec5ec8a.png"
+      alt="logos of Vue, Netlify and Fauna"
+    />
+    <h1 style="text-align: center">Vue - Netlify - Fauna</h1>
+    <h2>A serverless stack with authentication ready to go!</h2>
+
     <div>
-      <Logo />
-      <h1 class="title">nuxt-netlify-fauna-auth</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
+      <p>
+        This is a demo app to show how you can use cool technologies like Fauna
+        and Netlify to build a CRUD application completely serverless and host
+        for free! 😎
+      </p>
+
+      <p>
+        If you want to see how this is all glued together check out the
+        <a href="https://github.com/chiubaca/vue-netlify-fauna-starter-kit"
+          >source code</a
         >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+        . Happy hacking!
+      </p>
     </div>
-  </div>
+    <LoginSignup v-if="currentUser === null" />
+    <div v-else id="greeting">
+      <h2>🖐️ Welcome Back {{ currentUser.user_metadata.full_name }}!</h2>
+      <p>
+        You're logged in. Go check out your
+        <router-link :to="{ name: 'journals' }">journals ➡️ </router-link>.
+      </p>
+    </div>
+    <GithubCorner
+      url="https://github.com/chiubaca/vue-netlify-fauna-starter-kit"
+    />
+  </main>
 </template>
 
 <script>
-export default {}
+import { mapGetters } from 'vuex'
+export default {
+  name: 'Home',
+  data() {
+    return {}
+  },
+  computed: {
+    ...mapGetters('auth', ['currentUser']),
+  },
+}
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
