@@ -10,6 +10,7 @@ export default {
     this.$store.dispatch('auth/initAuth')
 
     attemptToAuthoriseTokens()
+    console.log('created')
   },
 }
 </script>
