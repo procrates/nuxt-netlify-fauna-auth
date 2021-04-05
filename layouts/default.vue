@@ -8,8 +8,10 @@ import detectEmailConfirmationToken from '~/helpers/authorise-tokens'
 export default {
   created() {
     this.$store.dispatch('auth/initAuth')
-    detectEmailConfirmationToken()
     console.log('created')
+  },
+  mounted() {
+    detectEmailConfirmationToken()
   },
 }
 </script>
