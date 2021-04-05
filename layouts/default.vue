@@ -4,14 +4,11 @@
   </div>
 </template>
 <script>
-import detectEmailConfirmationToken from '~/helpers/authorise-tokens'
 export default {
   created() {
     this.$store.dispatch('auth/initAuth')
+    this.detectEmailConfirmationToken()
     console.log('created')
-  },
-  mounted() {
-    detectEmailConfirmationToken()
   },
 }
 </script>
