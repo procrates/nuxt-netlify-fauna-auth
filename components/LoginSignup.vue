@@ -106,11 +106,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(
-      'auth/attemptSignup',
-      'auth/attemptLogin',
-      'auth/attemptExternalSignup'
-    ),
+    ...mapActions({
+      attemptSignup: 'auth/attemptSignup',
+      attemptLogin: 'auth/attemptLogin',
+      attemptExternalLogin: 'auth/attemptExternalSignup',
+    }),
     toggleMode() {
       this.mode === 'register'
         ? (this.mode = 'login')
