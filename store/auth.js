@@ -171,6 +171,7 @@ export const actions = {
 
     return new Promise((resolve, reject) => {
       console.log('attempt confirmation promis')
+      console.log(state.GoTrueAuth.confirm)
       state.GoTrueAuth.confirm(token)
         .then((response) => {
           console.log('User has been confirmed')
@@ -297,7 +298,7 @@ export const actions = {
 
   attemptPasswordRecovery({ state, commit }, token) {
     return new Promise((resolve, reject) => {
-      state.GoTrueAuth.recover(token)
+      state.GoTrueAuth.recover(token, true)
         .then((response) => {
           console.log('Signing in user with recovery token')
           commit('SET_CURRENT_USER', response)

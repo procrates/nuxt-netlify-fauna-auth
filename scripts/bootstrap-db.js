@@ -8,7 +8,7 @@ const q = faunadb.query
 function setupFaunaDB() {
   console.log(chalk.yellow('Attempting to create the DB schemas...'))
 
-  const key = 'fnAEGCI57jACB_V9FsYCe2HSFqsPtXZKAInmUxHw'
+  const key = process.env.FAUNADB_SERVER_KEY
 
   const client = new faunadb.Client({
     secret: key,
