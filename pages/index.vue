@@ -1,51 +1,23 @@
 <template>
-  <main class="home space">
-    <img
-      id="logo"
-      src="https://user-images.githubusercontent.com/18376481/78156268-78aed080-7436-11ea-9da7-57d83ec5ec8a.png"
-      alt="logos of Vue, Netlify and Fauna"
-    />
-    <h1 style="text-align: center">Vue - Netlify - Fauna</h1>
-    <h2>A serverless stack with authentication ready to go!</h2>
-
-    <div>
-      <p>
-        This is a demo app to show how you can use cool technologies like Fauna
-        and Netlify to build a CRUD application completely serverless and host
-        for free! 😎
-      </p>
-
-      <p>
-        If you want to see how this is all glued together check out the
-        <a href="https://github.com/chiubaca/vue-netlify-fauna-starter-kit"
-          >source code</a
-        >
-        . Happy hacking!
-      </p>
-    </div>
-    <LoginSignup v-if="currentUser === null" />
-    <div v-else id="greeting">
-      <h2>🖐️ Welcome Back {{ currentUser.user_metadata.full_name }}!</h2>
-      <p>
-        You're logged in. Go check out your
-        <router-link :to="{ name: 'journals' }">journals ➡️ </router-link>.
-      </p>
-    </div>
-    <GithubCorner
-      url="https://github.com/chiubaca/vue-netlify-fauna-starter-kit"
-    />
-  </main>
+  <div class="max-w-3xl mx-auto p-2">
+    <h3 class="text-2xl text-center mt-10">Home</h3>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'Home',
-  data() {
-    return {}
-  },
   computed: {
-    ...mapGetters('auth', ['currentUser']),
+    ...mapGetters({
+      user: 'auth/user',
+    }),
+  },
+  methods: {
+    ...mapActions({
+      openLogin: 'auth/openLogin',
+      openSignup: 'auth/openSignup',
+      logout: 'auth/logout',
+    }),
   },
 }
 </script>
